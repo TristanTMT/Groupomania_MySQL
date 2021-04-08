@@ -82,7 +82,7 @@ export default {
           )
           .then((res) => {
             if (res.status === 201) {
-              location.href = "/";
+              this.$rouer.push( 'Home');
             }
           })
           .catch((error) => {
@@ -111,7 +111,7 @@ export default {
 
 img {
   width: 100%;
-  background: rgba(30, 130, 76, .5);
+  // background: rgba(30, 130, 76, .5);
 }
 
 nav {
@@ -120,7 +120,7 @@ nav {
 }
 
 .active {
-  color: #7eca9c;
+  color: #b4b4b4;
   font-weight: bold;
 }
 
@@ -149,7 +149,7 @@ form input {
   padding: 10px;
   font-size: 1.1rem;
   color: white;
-  background-color: rgb(43, 42, 42);
+  background-color: #091f43;
   border: none;
   border-radius: 10px;
   transition-duration: 0.2s;

@@ -1,11 +1,11 @@
 <template>
   <div class="newPost">
-      <div class="newPost-create-btn" @click="visible = true">Ajouter un nouveau post</div>
+      <div class="newPost-create-btn" @click="show = true">Ajouter un nouveau post</div>
 
     <transition name="fade">
-      <div class="overlay" v-if="visible">
+      <div class="overlay" v-if="show">
           <div class="form-wrapper">
-            <span class="form-close"  @click="visible = false">Fermer</span>
+            <span class="form-close"  @click="show = false">Fermer</span>
             <form class="newPost-form" @submit.prevent="sendNewPost()">
 
                 <label for="newPost-title">Titre</label>
@@ -57,7 +57,7 @@ export default {
 
     data(){
         return{
-            visible: false,
+            show: false,
             content: '',
         }
     },
@@ -82,7 +82,7 @@ export default {
                         }
                     }
                 )
-                .then( this.visible = false)
+                .then( this.show = false)
                 .then(this.$root.$emit('Posts'));
         }
     }
@@ -92,13 +92,13 @@ export default {
 <style scoped lang="scss"> 
 
     .newPost{
-        padding: 20px 20px 0px 20px ;   
+        padding: 0 20px 0px 20px ; 
     }
 
     .newPost-create-btn{
-        background: #7eca9c;
+        background: #d1515a;
         max-width: 500px;
-        padding: 1rem;
+        padding: .5rem;
         margin: 50px auto;
         color: white;
         cursor: pointer;

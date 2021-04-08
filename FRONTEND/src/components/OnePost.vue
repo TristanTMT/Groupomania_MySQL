@@ -1,6 +1,7 @@
 <template>
     <div class="onePost">
         <div class="post-wrapper" v-if="!modify">
+            <div class="post-date">{{this.post.date}}</div>
             <h2 class="post-title">{{this.post.title}}</h2>
             <div class="post-content" v-html="this.post.content"></div>
         </div>
@@ -31,11 +32,11 @@
                 <textarea id="modify-content" v-model="this.post.content"></textarea>
             </editor>
         </div>
-
+        <button><router-link to="/">Revenir aux articles</router-link></button>
         <button v-if="authorized && !modify" @click="modify = true">Modifier</button>
+        <button v-if="authorized" class="delete-btn" @click="deleteOnePost()">Supprimer le post</button>
         <button v-if="modify" @click="modify = false">Annuler</button>
         <button v-if="modify" @click="modifyOnePost()">Publier les modifications</button>
-        <button v-if="modify" class="delete-btn" @click="deleteOnePost()">Supprimer le post</button>
     </div>
     
 </template>
@@ -78,6 +79,7 @@ export default {
             )
             .then(res => {
                 this.post = res.data[0];
+                console.log(res.data[0]);
 
                 if(this.$user.userId === this.post.userId || this.$user.admin == 1){
                     this.authorized = true;
@@ -131,16 +133,21 @@ export default {
     /* Post style */
     .post-wrapper{
         margin: 50px auto 30px auto;
-        padding: 30px;
+        padding: 20px;
         max-width: 800px;
         text-align: left;
         box-shadow: 0px 0px 50px -7px rgba(0,0,0,0.1);
-        border-bottom: solid #7eca9c 5px;
+        border-bottom: solid #d1515a 5px;
+    }
+
+    .post-date {
+        font-size: .8rem;
+        margin-bottom: 1rem;
     }
 
     .post-title {
         margin: 0;
-        color: #7eca9c;
+        color: #d1515a;
         font-size: 2rem;
     }
 
@@ -158,19 +165,19 @@ export default {
         max-width: 800px;
         text-align: left;
         box-shadow: 0px 0px 50px -7px rgba(0,0,0,0.1);
-        border-bottom: solid #7eca9c 5px;
+        border-bottom: solid #d1515a 5px;
     }
 
     #modify-title {
         margin: 0;
         margin-bottom: 20px;
-        color: #7eca9c;
+        color: #d1515a;
         font-size: 2rem;
     }
 
     #modify-content{
         margin-top: 20px;
-        height: 200px;
+        height: 400px;
         width: calc(100% - 22px);
         padding: 10px;
         resize: none;
@@ -187,7 +194,8 @@ export default {
         border-radius: 10px;
         transition-duration: 0.2s;
         cursor: pointer;
-        margin: 0px 20px 50px 20px;
+        /* margin: 0px 20px 50px 20px; */
+        margin: 10px 20px;
     }
 
     .delete-btn{

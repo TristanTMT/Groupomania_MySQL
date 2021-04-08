@@ -22,7 +22,7 @@ export default {
     methods: {
         disconnect(){
             localStorage.removeItem('user');
-            location.href = "/";
+            this.$router.push({ name: 'Home' });
         }
     }
 }
@@ -34,8 +34,8 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding: 0px 70px 0px 70px;
-        background: #184d47;
-        height: 150px;
+        background: #091f43;
+        height: 100px;
     }
 
     .header img{

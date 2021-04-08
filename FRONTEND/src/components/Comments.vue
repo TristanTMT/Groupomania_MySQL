@@ -4,7 +4,7 @@
         <form @submit.prevent= newComment()>
             <label for="new-comment">Laisser un commentaire :</label>
             <textarea name="newComment" id="new-comment" placeholder="Laisser un commentaire..." required></textarea>
-            <button type="submit" id="send-comment">Envoyer</button>
+            <button type="submit" id="send-comment">Envoyer le commentaire</button>
         </form>
 
         <h2 v-if="comments.length > 0">Commentaires :</h2>
@@ -102,7 +102,8 @@ export default {
     .Comments{
         max-width: 800px;
         margin: 0 auto;
-        padding: 30px;
+        padding-bottom: 30px;
+        background: white;
     }
 
     label{
@@ -133,7 +134,9 @@ export default {
 
     .comment{
         padding: 20px 20px 20px 30px;
-        border-left: 5px solid rgb(43, 42, 42);
+        /* border-left: 5px solid rgb(43, 42, 42); */
+        border-radius: 10px;
+        border-bottom: 1px solid black;
         margin-top: 20px;
         box-shadow: 0px 0px 50px -7px rgba(0,0,0,0.1);
         text-align: left;
@@ -144,6 +147,7 @@ export default {
         display: flex;
         justify-content: space-between;
         color: rgb(0, 0, 0);
+        font-weight: bolder;
         font-size: .8rem;
         margin-bottom: 10px;
     }

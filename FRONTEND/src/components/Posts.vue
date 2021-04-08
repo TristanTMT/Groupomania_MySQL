@@ -1,5 +1,6 @@
 <template>
     <div class="posts">
+        <h2 class="allPosts">Tous les articles :</h2>
         <article class="post" v-for = "post in posts" :key="post.id">
             <router-link :to="{ name: 'Post', params: { id: post.id } }">
                 <div class="post-header">
@@ -22,7 +23,7 @@ export default {
     data(){
         return {
             posts: [],
-            visible: false
+            show: false
         }
     },
 
@@ -78,16 +79,17 @@ export default {
 <style scoped  lang="scss">
     .posts{
         margin: 0 auto;
+        margin-bottom: 10px;
         padding: 20px;
         max-width: 800px;
-        border: 5px solid black;
+        border: 1px solid black;
         border-radius: 10px;
     }
     .post{
         position: relative;
         padding: 20px 20px 20px 30px;
         margin-bottom: 30px;
-        border-left: 5px solid #7eca9c;
+        border-left: 5px solid #d1515a;
         box-shadow: 0px 0px 50px -7px rgba(0,0,0,0.1);
         text-align: left;
         transition-duration: .1s;
@@ -98,7 +100,7 @@ export default {
 
     .post h2{
         margin-top: 7px;
-        color: #7eca9c;
+        color: #d1515a;
     }
     .post-header{
         display: flex;

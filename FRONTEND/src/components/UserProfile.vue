@@ -5,7 +5,8 @@
             <span>{{this.$user.nom}}</span> <span>{{this.$user.prenom}}</span>
         </div>
 
-        <div class="delete-profile" @click="deleteUser()">Supprimer le compte</div>
+        <button><router-link to="/">Tous les articles</router-link></button>
+        <div class="delete-profile" @click="deleteUser()">Se déconnecter</div>
 
         <h3>Vos posts :</h3>
     </div>
@@ -32,7 +33,7 @@ export default {
           }
       )
       .then(localStorage.removeItem('user'))
-      .then(location.href = "/");
+      this.$router.push({ path: '/signup' });
     }
 
   }
@@ -52,12 +53,22 @@ export default {
         font-size: 3rem;
     }
 
-    .profile-info h3 {
-        /* text-align: left; */
-    }
+    
 
     .profile-info span {
         font-size: 3rem;
+    }
+
+    button {
+      margin-bottom: 1rem;
+      padding: 10px;
+      font-size: 1.1rem;
+      color: white;
+      background-color: rgb(43, 42, 42);
+      border: none;
+      border-radius: 10px;
+      transition-duration: 0.2s;
+      cursor: pointer;
     }
 
     .delete-profile{
