@@ -75,7 +75,7 @@ exports.login = (req, res, next) => {
                     });
             } else {
                 res.status(404).json({
-                    message: 'Utilisateur inconnu.'
+                    message: 'Utilisateur inconnu. Vous inscrire'
                 });
             }
         }
