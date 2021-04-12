@@ -32,7 +32,9 @@
 - GIT
 
 ## Installation
+Clone this project from GitHub.
 
+----------
 ### Database setup
 Start your MySQL server with GUI like Workbench, PhpMyAdmin, etc or with your terminal :
 ````
@@ -53,7 +55,11 @@ you can find it from :
 ```
 /backend/database_import/groupomania.sql
 ```
-Create a .ENV file in the backend *root*, 
+After :
+```
+cd backend
+```
+Create a .ENV file in the backend *root*
 copy paste the following and
 change DB_USER and DB_PASS with your infos:
 ```
@@ -63,39 +69,26 @@ DB_PASS= your_user_password
 DB_NAME= groupomania
 TOKEN= hHpK79ZV4N7YAbdj
 ```
-$cd BACKEND repository in terminal :
-```
-nodemon server.js
-```
-Your BDD is ready ! 
-----------
-
-To access admin user, enter the following infos on the connection page :
-```
-Email:
-admin@admin.com
-
-Password:
-admin
-```
-
 ### Back-end setup
-```
-cd backend
-```
+
 then
 ```
 npm install
 ```
 Start server
 ```
-nodemon server
+nodemon server.js
+```
+You must read in terminal :
+```
+Listening on port 3000
+Houra ! Connection à la base de donnée réussie !
 ```
 ### Front-end setup
 ```
 cd frontend
 ```
-Make sure to have Vue.cli
+Make sure to have Vue.cli. My version is 4.5.0.
 ```
 npm install -g @vue/cli
 ```
@@ -107,4 +100,18 @@ Start front
 ```
 npm run serve
 ```
+Let's go :
+```
+http://localhost:8080/
+```
+Create users on the connection page and enjoy !
 
+To access admin user (admin = 1 in users table), enter the following infos on the connection page :   
+Don't delete this account, just disconnect.
+```
+Email:
+admin@admin.com
+
+Password:
+admin
+```
