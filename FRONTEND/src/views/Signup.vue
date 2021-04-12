@@ -12,17 +12,18 @@ export default {
   name: 'Signup',
 
   components: {
-    SignupForm
+    SignupForm,
   },
 }
 </script>
 
-<style lang="scss">
-body{
-  background: url("../../public/assets/fond.jpg") no-repeat center fixed; 
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
-}
+
+<style lang='scss'>
+// body{
+//   background: url("../../public/assets/fond.jpg") no-repeat center fixed; 
+//   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+//   background-size: cover; /* version standardisée */
+// }
 
 form {
   display: flex;
@@ -34,4 +35,10 @@ form {
   border-radius: 10px;
   box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.68);
 }
+
+// media queries toujours à la fin du fichier style
+@media (min-width: 320px) {
+  
+}
+
 </style>

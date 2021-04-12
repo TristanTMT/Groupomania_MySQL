@@ -1,24 +1,21 @@
 <template>
   <div class="wrapper">
     <form @submit.prevent="signup()">
-      <!-- <div class="img">
-        <img src="../../public/assets/2.png" alt="Groupomania logo" />
-      </div> -->
       <nav>
         <router-link to="/" class="inactive">Se connecter</router-link> |
         <router-link to="/signup" class="active">S'inscrire</router-link>
       </nav>
       <label for="signup-nom">Nom :</label>
-      <input id="signup-nom" type="text" placeholder="Nom" required />
+      <input id="signup-nom" type="text" placeholder="Nom" v-model="signupNom"  required />
 
-      <label for="signup-prenom">Prenom :</label>
-      <input id="signup-prenom" type="text" placeholder="Prenom" required />
+      <label for="signup-prenom">Prénom :</label>
+      <input id="signup-prenom" type="text" placeholder="Prénom" v-model="signupPrenom"  required />
 
       <label for="signup-password">Mot de passe :</label>
       <input
         id="signup-password"
         type="password"
-        placeholder="Mot de passe"
+        placeholder="Mot de passe" v-model="signupPassword" 
         required
       />
 
@@ -32,8 +29,8 @@
         required
       />
 
-      <label for="signup-email">Email :</label>
-      <input id="signup-email" type="email" placeholder="Email" required />
+      <label for="signup-email">E-mail :</label>
+      <input id="signup-email" type="email" placeholder="E-mail" v-model="signupEmail"  required />
 
       <div class="error-message">{{ message }}</div>
 
@@ -51,28 +48,28 @@ export default {
   data() {
     return {
       message: "",
+      signupNom: "",
+      signupPrenom: "",
+      signupEmail: "",
     };
   },
 
   methods: {
     signup() {
-      const nom = document.getElementById("signup-nom").value;
-      const prenom = document.getElementById("signup-prenom").value;
-      const password = document.getElementById("signup-password").value;
+      const password = document.getElementById('signup-password').value;
       const passwordVerif = document.getElementById(
         "signup-password-verification"
       ).value;
-      const email = document.getElementById("signup-email").value;
 
       if (password === passwordVerif) {
         axios
           .post(
             `${this.$apiUrl}/auth/signup`,
             {
-              nom,
-              prenom,
+              nom: this.signupNom,
+              prenom: this.signupPrenom,
               password,
-              email,
+              email: this.signupEmail,
             },
             {
               headers: {
@@ -82,7 +79,8 @@ export default {
           )
           .then((res) => {
             if (res.status === 201) {
-              this.$rouer.push( 'Home');
+              alert("Votre compte à bien été créé. Connectez-vous à présent !")
+              this.$router.push('Login');
             }
           })
           .catch((error) => {
@@ -98,7 +96,20 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+
+@media screen and (min-width: 767px) {
+  #signup-btn {
+  padding: 10px;
+  font-size: 1.1rem;
+  color: white;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+}
 
 .wrapper {
   max-width: 500px;
@@ -139,10 +150,12 @@ form label {
 }
 
 form input {
-  font-size: 1.05rem;
+  font-size: 1rem;
   padding: 10px;
   margin-bottom: 15px;
   text-align: center;
+  border: none;
+  border-radius: 10px;
 }
 
 #signup-btn {

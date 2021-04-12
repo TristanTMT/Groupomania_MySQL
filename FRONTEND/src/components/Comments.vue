@@ -2,7 +2,7 @@
   <div class="Comments">
       
         <form @submit.prevent= newComment()>
-            <label for="new-comment">Laisser un commentaire :</label>
+            <label for="new-comment" id="comment">Laisser un commentaire :</label>
             <textarea name="newComment" id="new-comment" placeholder="Laisser un commentaire..." required></textarea>
             <button type="submit" id="send-comment">Envoyer le commentaire</button>
         </form>
@@ -39,11 +39,11 @@ export default {
 
     methods: {
         newComment(){
-            const postId = parseInt(this.$route.params.id);
+            const commentId = parseInt(this.$route.params.id);
             const userId = this.$user.userId;
             const content = document.getElementById('new-comment').value;
 
-            axios.post(`${this.$apiUrl}/posts/${postId}/comment/`,
+            axios.post(`${this.$apiUrl}/comments/${commentId}/comment/`,
                 {
                     userId,
                     content
@@ -59,9 +59,9 @@ export default {
         },
 
         getAllComments(){
-            const postId = parseInt(this.$route.params.id);
+            const commentId = parseInt(this.$route.params.id);
 
-            axios.get(`${this.$apiUrl}/posts/${postId}/comments`,
+            axios.get(`${this.$apiUrl}/comments/${commentId}/comments`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export default {
         },
 
         deleteComment(commentId){
-            axios.delete(`${this.$apiUrl}/posts/comment/${commentId}`,
+            axios.delete(`${this.$apiUrl}/comments/comment/${commentId}`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -121,8 +121,8 @@ export default {
 
     button{
         margin-top: 20px;
-        padding: 10px;
-        font-size: 1.1rem;
+        padding: 8px;
+        font-size: .9rem;
         color: white;
         background-color: rgb(43, 42, 42);
         border: none;

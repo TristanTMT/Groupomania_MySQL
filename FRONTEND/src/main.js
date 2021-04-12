@@ -5,6 +5,7 @@ import router from './router';
 Vue.config.productionTip = false;
 
 //**Global Variables**
+import "@/assets/global.css";
 //ApiUrl
 Vue.prototype.$apiUrl = 'http://localhost:3000/api';
 //User / Token

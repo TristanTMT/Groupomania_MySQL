@@ -1,18 +1,19 @@
 <template>
-    <div class="header">
-        <router-link to='/'>
-        <h1>
-            <img src="../../public/assets/2.png" alt="Groupomania logo">
-        </h1>
-        </router-link>
-
-        <nav>
-            <router-link to='/profile'>
-                <div>Mon compte</div>
-            </router-link>
-            <div id="disconnect-btn" @click = disconnect()>Se déconnecter</div>
-        </nav>
-    </div> 
+<nav class="navbar navbar-expand-md navbar-dark mb-4">
+  <div class="container-fluid">
+    <router-link to="/" class="navbar-brand"><img src="../../public/assets/2.png"></router-link>
+    <div>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <div><router-link to="/profile" class="nav-link">Mon compte</router-link></div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" id="disconnect-btn" @click = disconnect()>Se déconnecter</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 </template>
 
 <script>
@@ -22,51 +23,30 @@ export default {
     methods: {
         disconnect(){
             localStorage.removeItem('user');
-            this.$router.push({ name: 'Home' });
+            this.$router.push({ name: 'Login' });
         }
     }
 }
 </script>
 
 <style scoped>
-    .header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0px 70px 0px 70px;
-        background: #091f43;
-        height: 100px;
-    }
+  .navbar{
+      background: #091f43;
+      height: 100px;
+  }
 
-    .header img{
-        width: 250px;
+  .nav-item div {
+      color: white !important;
+      cursor: pointer;
+  }
+
+  .nav-item .nav-link {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bolder;
+  }
+
+  img{
+        width: 150px;
         height: auto;
-    }
-
-    nav{
-        display: flex;
-    }
-
-    nav div{
-        color: white;
-        margin-left: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition-duration: .2s;
-    }
-
-    .fas{
-        font-size: 1.5rem;
-    }
-
-    nav div:hover{
-        color: rgb(117, 117, 117);
-    }
-
-    @media (max-width: 670px) {
-        .header{
-            flex-direction: column;
-            padding: 30px 20px 20px 20px;
-        }
     }
 </style>

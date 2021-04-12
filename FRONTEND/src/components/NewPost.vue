@@ -1,6 +1,6 @@
 <template>
   <div class="newPost">
-      <div class="newPost-create-btn" @click="show = true">Ajouter un nouveau post</div>
+      <div class="newPost-create-btn" @click="show = true">Écrire un article</div>
 
     <transition name="fade">
       <div class="overlay" v-if="show">
@@ -17,17 +17,22 @@
                     apiKey="pwm5eqs0wnsqf0ip208nkercdytlgj4hyr2nx8544cd44c8k"
                     v-model="content"
                     :init="{
-                    menubar: false,
+                    menubar: true,
+                    a11y_advanced_options: true,
+                    automatic_uploads: true,
+                    paste_data_images: true,
                     plugins: [
                         'advlist autolink lists link',
                         'searchreplace visualblocks code fullscreen',
                         'print preview anchor insertdatetime media',
-                        'paste code help wordcount table'
+                        'paste code help wordcount table',
+                        'emoticons', 'media', 'image',  
                     ],
+                    image_advtab: true,
                     toolbar:
                         'undo redo | formatselect | bold italic | \
                         alignleft aligncenter alignright | \
-                        bullist numlist outdent indent | help'
+                        bullist numlist outdent indent | emoticons media image link | help | ' ,
                     }"
                 >
                     <textarea id="newPost-content" placeholder="Contenu de votre post..."></textarea>
@@ -90,7 +95,6 @@ export default {
 </script>
 
 <style scoped lang="scss"> 
-
     .newPost{
         padding: 0 20px 0px 20px ; 
     }
@@ -147,7 +151,7 @@ export default {
     }
 
     form input{
-        font-size: 1.05rem;
+        font-size: 1rem;
         padding: 10px;
         margin-bottom: 15px;
         text-align: center;
@@ -188,5 +192,11 @@ export default {
     }
     .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
+    }
+
+    @media (max-width: 425px) {
+        .form-wrapper {
+            width: 400px;
+        }
     }
 </style>

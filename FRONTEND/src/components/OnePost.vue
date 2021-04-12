@@ -1,10 +1,17 @@
 <template>
     <div class="onePost">
-        <div class="post-wrapper" v-if="!modify">
-            <div class="post-date">{{this.post.date}}</div>
-            <h2 class="post-title">{{this.post.title}}</h2>
+        <div class="test"><router-link to="/"><img class="back-button" src="../assets/back-button.png" alt="Retour aux articles"></router-link></div>
+        <article class="post-wrapper" v-if="!modify">
+            <div class="post-header">
+                <h2 class="post-title">{{this.post.title}}</h2>
+            </div>
             <div class="post-content" v-html="this.post.content"></div>
-        </div>
+            <div class="post-info">
+                <span class="post-modify" v-if="authorized && !modify" @click="modify = true">Modifier</span>
+                <span><a class="post-comment" href="#comment">Commentaires</a></span>
+                <span v-if="authorized" class="delete-btn" @click="deleteOnePost()">Supprimer le post</span>
+            </div>
+        </article>
 
         <div class="modify-wrapper" v-if="modify">
             <label for="modify-title">Modifier le titre :</label>
@@ -16,25 +23,29 @@
                 apiKey="pwm5eqs0wnsqf0ip208nkercdytlgj4hyr2nx8544cd44c8k"
                 v-model="modifiedContent"
                 :init="{
-                menubar: false,
+                menubar: true,
+                a11y_advanced_options: true,
+                automatic_uploads: true,
+                paste_data_images: true,
                 plugins: [
                     'advlist autolink lists link',
                     'searchreplace visualblocks code fullscreen',
                     'print preview anchor insertdatetime media',
-                    'paste code help wordcount table'
+                    'paste code help wordcount table',
+                    'emoticons', 'media', 'image',  
                 ],
+                image_advtab: true,
                 toolbar:
                     'undo redo | formatselect | bold italic | \
                     alignleft aligncenter alignright | \
-                    bullist numlist outdent indent | help'
+                    bullist numlist outdent indent | emoticons media image link | help | ' ,
                 }"
             >
                 <textarea id="modify-content" v-model="this.post.content"></textarea>
             </editor>
         </div>
-        <button><router-link to="/">Revenir aux articles</router-link></button>
-        <button v-if="authorized && !modify" @click="modify = true">Modifier</button>
-        <button v-if="authorized" class="delete-btn" @click="deleteOnePost()">Supprimer le post</button>
+        <!-- <button v-if="!modify"><router-link to="/">Revenir aux articles</router-link></button> -->
+        
         <button v-if="modify" @click="modify = false">Annuler</button>
         <button v-if="modify" @click="modifyOnePost()">Publier les modifications</button>
     </div>
@@ -129,15 +140,37 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+.test {
+    text-align: left;
+    margin-left: 100px;
+}
+.back-button {
+    height: 30px;
+    width: auto;
+    transition-duration: 1s;
+    &:hover {
+        color: red;
+        transform: scale(1.5);
+    }
+}
+
     /* Post style */
     .post-wrapper{
-        margin: 50px auto 30px auto;
+        margin: 40px auto 30px auto;
         padding: 20px;
         max-width: 800px;
         text-align: left;
         box-shadow: 0px 0px 50px -7px rgba(0,0,0,0.1);
         border-bottom: solid #d1515a 5px;
+        border-radius: 5px;
+    }
+
+    .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .post-date {
@@ -153,6 +186,22 @@ export default {
 
     .post-content{
         margin-top: 20px;
+    }
+
+    .post-modify {
+        font-size: 1rem;
+    }
+
+    .post-info span{
+        margin-right: 1.5rem;
+        color: grey;
+        font-size: 14px;
+        padding: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        &:hover {
+            background: rgba(191, 191, 191, .5);
+        }
     }
 
     /* Modify style */
@@ -186,8 +235,8 @@ export default {
 
     .onePost button{
         margin-top: 20px;
-        padding: 10px;
-        font-size: 1.1rem;
+        padding: 8px;
+        font-size: .9rem;
         color: white;
         background-color: rgb(43, 42, 42);
         border: none;
@@ -198,8 +247,9 @@ export default {
         margin: 10px 20px;
     }
 
-    .delete-btn{
+    .delete-btn:hover{
         background-color: red !important;
+        color: white;
     }
 
     label{

@@ -6,11 +6,11 @@
         <form @submit.prevent = login()>
             <nav><router-link to="/" class="active">Se connecter</router-link> | <router-link to="/signup" class="inactive">S'inscrire</router-link></nav>
 
-            <label for="login-email">Email :</label>
-            <input id="login-email" type="text" placeholder="Email" required>
+            <label for="login-email">E-mail :</label>
+            <input id="login-email" type="text" placeholder="E-mail" v-model="email" required>
             
             <label for="login-password">Mot de passe :</label>
-            <input id="login-password" type="password" placeholder="Mot de passe" required>
+            <input id="login-password" type="password" placeholder="Mot de passe" v-model="password" required>
 
             <div class="error-message">{{message}}</div>
 
@@ -30,19 +30,19 @@ export default {
     data() {
         return {
             message: "",
+            email: "",
+            password: "",
         };
     },
 
     methods: {
 
         login(){
-            const email = document.getElementById("login-email").value;
-            const password = document.getElementById("login-password").value;
 
             axios.post(`${this.$apiUrl}/auth/login`,
                 {
-                    email,
-                    password
+                    email: this.email,
+                    password: this.password
                 },
                 {
                     headers: {
@@ -53,6 +53,7 @@ export default {
             .then(res => {
                 localStorage.setItem('user', JSON.stringify(res.data));
                 location.reload();
+                // this.$router.push('Profile');
             })
             .catch((error) => {
                 if (error.response.status === 404) {
@@ -110,6 +111,8 @@ export default {
         padding: 10px;
         margin-bottom: 15px;
         text-align: center;
+        border-radius: 10px;
+        border: none;
     }
 
     #login-btn{
