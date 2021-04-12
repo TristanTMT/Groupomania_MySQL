@@ -68,9 +68,9 @@ exports.getUserPosts = (req, res, next) => {
     });
 };
 // Like post
-exports.likePost =(req, res, next) => {
+// exports.likePost =(req, res, next) => {
 
-};
+// };
 
 // // New comment
 // exports.newComment = (req, res, next) => {

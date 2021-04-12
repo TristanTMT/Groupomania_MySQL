@@ -12,7 +12,7 @@ router.put('/:id', auth, postCtrl.modifyOnePost);
 router.get('/user:id/posts', auth, postCtrl.getUserPosts);
 
 // Likes
-router.post('/:id/like', auth, postCtrl.likePost);
+// router.post('/:id/like', auth, postCtrl.likePost);
 
 // // Commentaires
 // router.get('/:id/comments', auth, postCtrl.getAllComments);
