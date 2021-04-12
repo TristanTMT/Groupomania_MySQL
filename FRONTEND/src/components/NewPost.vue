@@ -32,7 +32,7 @@
                     toolbar:
                         'undo redo | formatselect | bold italic | \
                         alignleft aligncenter alignright | \
-                        bullist numlist outdent indent | emoticons media image link | help | ' ,
+                        bullist numlist outdent indent | emoticons |media | image | link | help | ' ,
                     }"
                 >
                     <textarea id="newPost-content" placeholder="Contenu de votre post..."></textarea>

@@ -38,7 +38,7 @@
                 toolbar:
                     'undo redo | formatselect | bold italic | \
                     alignleft aligncenter alignright | \
-                    bullist numlist outdent indent | emoticons media image link | help | ' ,
+                    bullist numlist outdent indent | emoticons |media | image | link | help | ' ,
                 }"
             >
                 <textarea id="modify-content" v-model="this.post.content"></textarea>
