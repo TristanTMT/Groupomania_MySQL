@@ -23,7 +23,7 @@ export default {
     methods: {
         disconnect(){
             localStorage.removeItem('user');
-            this.$router.push({ name: 'Login' });
+            this.$router.push({ name: 'Signup' });
         }
     }
 }
