@@ -58,4 +58,23 @@ img {
   height: auto;
 }
 
+@media (max-width: 450px) {
+  .navbar {
+    height: 150px;
+  }
+
+  .container-fluid {
+    display: flex;
+  }
+
+  .nav-item .nav-link {
+    font-size: 12px;
+  }
+
+  img {
+    width: 100px;
+    height: auto;
+  }
+}
+
 </style>

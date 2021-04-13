@@ -5,7 +5,7 @@
         </div> -->
     <form @submit.prevent="login()">
       <nav>
-        <router-link to="/" class="active">Se connecter</router-link> |
+        <router-link to="/login" class="active">Se connecter</router-link> |
         <router-link to="/signup" class="inactive">S'inscrire</router-link>
       </nav>
 
@@ -67,8 +67,8 @@ export default {
         )
         .then((res) => {
           localStorage.setItem("user", JSON.stringify(res.data));
-          location.reload();
-        //   this.$router.push("Profile");
+          // location.reload();
+          this.$router.push("/");
         })
         .catch((error) => {
           if (error.response.status === 404) {

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <form @submit.prevent="signup()">
       <nav>
-        <router-link to="/" class="inactive">Se connecter</router-link> |
+        <router-link to="/login" class="inactive">Se connecter</router-link> |
         <router-link to="/signup" class="active">S'inscrire</router-link>
       </nav>
       <label for="signup-nom">Nom :</label>
@@ -30,7 +30,8 @@
       <input
         id="signup-password-verification"
         type="password"
-        placeholder="Vérifier mot de passe" aria-label="Vérifier mot de passe"
+        placeholder="Retaper mot de passe"
+        aria-label="Vérifier mot de passe"
         required
       />
 
@@ -44,10 +45,8 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "SignupForm",
-
   data() {
     return {
       message: "",
@@ -56,14 +55,12 @@ export default {
       signupEmail: "",
     };
   },
-
   methods: {
     signup() {
       const password = document.getElementById('signup-password').value;
       const passwordVerif = document.getElementById(
         "signup-password-verification"
       ).value;
-
       if (password === passwordVerif) {
         axios
           .post(
@@ -100,7 +97,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 @media screen and (min-width: 767px) {
   #signup-btn {
   padding: 10px;
@@ -113,45 +109,36 @@ export default {
   cursor: pointer;
 }
 }
-
 .wrapper {
   max-width: 500px;
   margin: 90px auto;
 }
-
 .inactive{
     color: white im !important;
 }
-
 img {
   width: 100%;
   // background: rgba(30, 130, 76, .5);
 }
-
 nav {
   font-size: 1.05rem;
   margin: 20px;
 }
-
 .active {
   color: white;
   font-weight: bold;
 }
-
 form {
   display: flex;
   flex-direction: column;
 }
-
 form label {
   color: rgba(0, 0, 0, 0.5);
   margin: 10px;
 }
-
 .error-message {
   background-color: rgba(255, 0, 0, 0.301);
 }
-
 form input {
   font-size: 1rem;
   padding: 10px;
@@ -160,7 +147,6 @@ form input {
   border: none;
   border-radius: 10px;
 }
-
 #signup-btn {
   padding: 10px;
   font-size: 1.1rem;
@@ -171,11 +157,9 @@ form input {
   transition-duration: 0.2s;
   cursor: pointer;
 }
-
 #signup-btn:hover {
   transform: scale(1.025);
 }
-
 label {
   font-size: 0.8rem;
   font-weight: bold;
