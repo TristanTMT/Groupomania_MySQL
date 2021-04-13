@@ -15,6 +15,7 @@
         type="text"
         placeholder="E-mail"
         v-model="email"
+        aria-label="E-mail"
         required
       />
 
@@ -24,6 +25,7 @@
         type="password"
         placeholder="Mot de passe"
         v-model="password"
+        aria-label="Mot de passe"
         required
       />
 
@@ -105,7 +107,7 @@ nav {
 }
 
 .active {
-  color: #b4b4b4;
+  color: white;
   font-weight: bold;
 }
 

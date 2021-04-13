@@ -6,16 +6,21 @@
         <router-link to="/signup" class="active">S'inscrire</router-link>
       </nav>
       <label for="signup-nom">Nom :</label>
-      <input id="signup-nom" type="text" placeholder="Nom" v-model="signupNom"  required />
+      <input id="signup-nom" type="text" placeholder="Nom" v-model="signupNom" aria-label="Nom" pattern="[a-zA-ZÀ-ÿ]{1,30}" required/>
 
       <label for="signup-prenom">Prénom :</label>
-      <input id="signup-prenom" type="text" placeholder="Prénom" v-model="signupPrenom"  required />
+      <input id="signup-prenom" type="text" placeholder="Prénom" v-model="signupPrenom" aria-label="Prénom" pattern="[a-zA-ZÀ-ÿ]{1,30}" required/>
 
+      <label for="signup-email">E-mail :</label>
+      <input id="signup-email" type="email" placeholder="E-mail" v-model="signupEmail"
+      aria-label="E-mail"
+      pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}" required />
+      
       <label for="signup-password">Mot de passe :</label>
       <input
         id="signup-password"
         type="password"
-        placeholder="Mot de passe" v-model="signupPassword" 
+        placeholder="Mot de passe" aria-label="Mot de passe"
         required
       />
 
@@ -25,12 +30,10 @@
       <input
         id="signup-password-verification"
         type="password"
-        placeholder="Vérifier mot de passe"
+        placeholder="Vérifier mot de passe" aria-label="Vérifier mot de passe"
         required
       />
 
-      <label for="signup-email">E-mail :</label>
-      <input id="signup-email" type="email" placeholder="E-mail" v-model="signupEmail"  required />
 
       <div class="error-message">{{ message }}</div>
 
@@ -80,7 +83,7 @@ export default {
           .then((res) => {
             if (res.status === 201) {
               alert("Votre compte à bien été créé. Connectez-vous à présent !")
-              this.$router.push('Login');
+              this.$router.push('/');
             }
           })
           .catch((error) => {
@@ -117,7 +120,7 @@ export default {
 }
 
 .inactive{
-    color: white;
+    color: white im !important;
 }
 
 img {
@@ -131,7 +134,7 @@ nav {
 }
 
 .active {
-  color: #b4b4b4;
+  color: white;
   font-weight: bold;
 }
 
