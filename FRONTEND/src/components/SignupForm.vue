@@ -80,7 +80,7 @@ export default {
           .then((res) => {
             if (res.status === 201) {
               alert("Votre compte à bien été créé. Connectez-vous à présent !")
-              this.$router.push('/');
+              this.$router.push('/login');
             }
           })
           .catch((error) => {

@@ -48,6 +48,7 @@ export default {
       this.$router.push({ path: '/signup' });
       if(this.$user.admin == 0){
         this.authorized = false;
+        // alert("Interdit")
       }
     },
 
