@@ -105,13 +105,14 @@ export default {
   position: relative;
   padding: 10px 20px 10px 20px;
   margin-bottom: 30px;
-  border-left: 5px solid #d1515a;
+  border-left: 1px  solid #d1515a;
   box-shadow: 0px 0px 50px -7px rgba(0, 0, 0, 0.1);
   text-align: left;
   border-radius: 5px;
   transition-duration: 0.1s;
   &:hover {
     box-shadow: 0px 0px 50px -7px rgba(0, 0, 0, 0.2);
+    border: 1px solid #d1515a;
   }
 }
 
