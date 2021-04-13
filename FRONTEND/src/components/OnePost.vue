@@ -119,14 +119,19 @@ export default {
     deleteOnePost() {
       const postId = this.$route.params.id;
 
-      axios
-        .delete(`${this.$apiUrl}/posts/${postId}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.$token}`,
-          },
-        })
-        .then((location.href = "/"));
+      if (confirm("Es-tu sûr de vouloir supprimer ? ")) {
+        axios
+          .delete(`${this.$apiUrl}/posts/${postId}`, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${this.$token}`,
+            },
+          })
+          .then(response => {
+            console.log(response);
+            location.href = "/"
+            });
+      }
     },
 
     modifyOnePost() {

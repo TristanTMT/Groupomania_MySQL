@@ -13,7 +13,7 @@
           <span
             class="post-modify"
             v-if="post.userId == $user.userId || $user.admin == 1"
-            >Voir article</span
+            >Voir mon article</span
           >
         </div>
         <h2 class="post-title">{{ post.title }}</h2>
