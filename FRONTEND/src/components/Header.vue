@@ -31,7 +31,7 @@ export default {
   methods: {
     disconnect() {
       localStorage.removeItem("user");
-      this.$router.push({ path: "Signup" });
+      this.$router.push({ path: "/login" });
     },
   },
 };

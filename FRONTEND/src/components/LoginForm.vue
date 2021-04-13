@@ -67,8 +67,8 @@ export default {
         )
         .then((res) => {
           localStorage.setItem("user", JSON.stringify(res.data));
-          // location.reload();
-          this.$router.push("/");
+          this.$router.replace("/profile");
+          location.reload("/profile");
         })
         .catch((error) => {
           if (error.response.status === 404) {
