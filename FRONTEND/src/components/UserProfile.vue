@@ -5,8 +5,8 @@
       <span>{{ this.$user.nom }}</span> <span>{{ this.$user.prenom }}</span>
     </div>
     <div class="test">
-      <button><router-link to="/">Tous les articles</router-link></button>
-      <div v-if="authorized" class="delete-profile" @click="deleteUser()">
+      <button><router-link to="/" aria-label="Tous les articles">Tous les articles</router-link></button>
+      <div v-if="authorized" class="delete-profile" @click="deleteUser()" aria-label="Supprimer son compte">
         Supprimer son compte
       </div>
     </div>

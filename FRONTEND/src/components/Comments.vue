@@ -4,7 +4,7 @@
         <form @submit.prevent= newComment()>
             <label for="new-comment" id="comment">Laisser un commentaire :</label>
             <textarea name="newComment" id="new-comment" placeholder="Laisser un commentaire..." required></textarea>
-            <button type="submit" id="send-comment">Envoyer le commentaire</button>
+            <button type="submit" id="send-comment" aria-label="Envoyer le commentaire">Envoyer le commentaire</button>
         </form>
 
         <h2 v-if="comments.length > 0">Commentaires :</h2>

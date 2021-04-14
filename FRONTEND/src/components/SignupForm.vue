@@ -38,7 +38,7 @@
 
       <div class="error-message">{{ message }}</div>
 
-      <button id="signup-btn" type="submit">S'inscrire</button>
+      <button id="signup-btn" type="submit" aria-label="S'inscrire">S'inscrire</button>
     </form>
   </div>
 </template>
@@ -173,5 +173,12 @@ label {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+// media queries toujours à la fin du fichier style
+@media (min-width: 320px) {
+  .wrapper {
+    padding: 15px;
+  }
 }
 </style>

@@ -8,15 +8,15 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
             <div>
-              <router-link to="/profile" class="nav-link"
+              <router-link to="/profile" class="nav-link" aria-label="Mon compte"
                 >Mon compte</router-link
               >
             </div>
           </li>
           <li class="nav-item">
-            <div class="nav-link" id="disconnect-btn" @click="disconnect()">
+            <button><div class="nav-link" id="disconnect-btn" @click="disconnect()" aria-label="Se déconnecter">
               Se déconnecter
-            </div>
+            </div></button>
           </li>
         </ul>
       </div>
@@ -56,6 +56,12 @@ export default {
 img {
   width: 150px;
   height: auto;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background: rgba(209, 81, 90, .8);
 }
 
 @media (max-width: 450px) {

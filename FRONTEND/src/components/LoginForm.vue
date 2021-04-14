@@ -31,7 +31,7 @@
 
       <div class="error-message">{{ message }}</div>
 
-      <button id="login-btn" type="submit">Connexion</button>
+      <button id="login-btn" type="submit" aria-label="Connexion">Connexion</button>
     </form>
   </div>
 </template>

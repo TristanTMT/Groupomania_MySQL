@@ -18,10 +18,11 @@
           class="post-modify"
           v-if="authorized && !modify"
           @click="modify = true"
+          aria-label="Modifier"
           >Modifier</span
         >
         <span><a class="post-comment" href="#comment">Commentaires</a></span>
-        <span v-if="authorized" class="delete-btn" @click="deleteOnePost()"
+        <span v-if="authorized" class="delete-btn" @click="deleteOnePost()" aria-label="Supprimer le post"
           >Supprimer le post</span
         >
       </div>
@@ -57,13 +58,13 @@
                     bullist numlist outdent indent | emoticons |media | image | link | help | ',
         }"
       >
-        <textarea id="modify-content" v-model="this.post.content"></textarea>
+        <textarea id="modify-content" v-model="this.post.content" aria-label="Contenu du texte"></textarea>
       </editor>
     </div>
     <!-- <button v-if="!modify"><router-link to="/">Revenir aux articles</router-link></button> -->
 
-    <button v-if="modify" @click="modify = false">Annuler</button>
-    <button v-if="modify" @click="modifyOnePost()">
+    <button v-if="modify" @click="modify = false" aria-label="Annuler">Annuler</button>
+    <button v-if="modify" @click="modifyOnePost()" aria-label="Publier les modifications">
       Publier les modifications
     </button>
   </div>
